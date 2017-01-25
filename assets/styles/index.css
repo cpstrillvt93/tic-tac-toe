@@ -1,0 +1,108 @@
+body{
+  background-color:white;
+}
+h1 {
+  background-color:white;
+  text-align: center;
+  font-size: 50px;
+  font-family: sans-serif;
+  margin-bottom: 90px;
+  width: 1000px;
+}
+h2 {
+  text-align: center;
+  margin: 0 auto;
+  font-family:sans-serif;
+}
+fieldset {
+  padding: 3em;
+  font:80% sans-serif;
+  height: 100%;
+  width: 114%;
+  border:1px solid green
+  }
+
+#start {
+  width: 250px;
+  background-color: white;
+  height: 300px;
+  font-family: sans-serif;
+  font-size: 50px;
+  margin: 0 auto;
+  float:left
+}
+
+#sign-up{
+  width: 10px
+  height: 10px
+
+}
+#sign-in{
+  width: 10px
+  height: 10px
+}
+#sign-out{
+  width: 10px
+  height: 10px
+
+}
+#change-password{
+  width: 10px
+  height: 10px
+
+}
+
+#scoreboard {
+  font-size: 25px;
+  width: 10px
+  height: 10px
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#topbar {
+  height: 100px;
+  width: 80%;
+  background-color: white;
+  margin: 0 auto;
+  line-height: 150px;
+  border-bottom: 25px;
+}
+#container {
+  height: 1500px;
+  width: 125%;
+  margin: 0 auto;
+  background-color: grey;
+}
+.row {
+  height: 30%;
+  width: 100%;
+}
+
+.tiles {
+  height: 75%;
+  width: 23%;
+  margin: 0 auto;
+  float: left;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 3.5%;
+    background-color: white;
+    padding: 3%;
+}
+/* .piece {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 100px;
+} */
+#board {
+  height: 80%;
+  width: 80%;
+  background-color:grey;
+  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
+  float: left;
+}
