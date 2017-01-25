@@ -24,10 +24,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .box {
-  border-color: $grey;
+  content: $grey;
   border-style: solid;
   border-width: .5px;
-  position: static;
+  position: realative;
   width: 25%;
 }
 

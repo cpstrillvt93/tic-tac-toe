@@ -18,7 +18,7 @@ let player = 'x';
 
 let player_move = function () {
   if(player === 'x') {
-    player = 'y';
+    player = 'o';
   }
   else {
     player = 'x';
@@ -84,4 +84,5 @@ module.exports = {
     checkRowWinner,
     checkColumnWinner,
     player_move,
+    player,
 };
