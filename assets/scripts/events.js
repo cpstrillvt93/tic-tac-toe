@@ -14,6 +14,8 @@ let board = ['', '', '', '', '', '', '', '', ''];
 
 let player = 'x';
 
+
+
 let player_move = function () {
   if(player === 'x') {
     player = 'y';
