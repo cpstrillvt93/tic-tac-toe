@@ -45,6 +45,7 @@ h2 {
 }
 
 .tiles {
+  text-color: black;
   height: 75%;
   width: 23%;
   margin: 0 auto;
@@ -54,14 +55,12 @@ h2 {
   margin-top: 2%;
   margin-bottom: 2%;
   border-radius: 3.5%;
-  background-color: #8AC007;
+  border: solid;
+  border-color: black;
+  background-color: white;
   padding: 3%;
 }
-.piece {
-  font-family: fantasy;
-  text-align: center;
-  font-size: 100px;
-}
+
 .board {
   height: 80%;
   width: 80%;

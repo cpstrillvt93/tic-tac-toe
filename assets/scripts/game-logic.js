@@ -16,17 +16,25 @@ let player_turn = function () {
 };
 
 //play x or o depending on player_turn;
-const play_move = function(tiles){
-  $(tiles).text(player_turn);
+const play_move = function(player){
+  $('.tiles').text(player);
   console.log('nice move');
 };
 
 //create game board that puts value in correct game board/tile index
-let setGameArray = function (board) {
-  let index = $(this).parent().index('.board');
-  board[index] = player_turn;
-  console.log('board up to date' + '' + "next player's turn");
+// one of the two below?
+
+let setGameArray = function (tiles) {
+  let index = $(tiles).data('.board');
+  board[index] = player;
+  console.log(board);
 };
+
+// let setGameArray = function (board) {
+//   let index = $(this).parent().index('.board');
+//   board[index] = player_turn;
+//   console.log('board up to date' + '' + "next player's turn");
+// };
 
 //check for winners function
 let diagonalWinner = function (board) {
@@ -89,9 +97,27 @@ const winner = function () {
   }
   console.log(player + '' + 'you win!');
 };
+//Make tile click with appropriate function
+const onTileClick = function (event) {
+  if ($('.tiles').text() === '') {
+    $( ".tiles" ).text(player);
+  }
+  else {
+    alert('error');
+  }
+    play_move(event.target);
+    setGameArray(event.target);
+    player_turn();
+    winner();
+};
 
+const addHandlers = () => {
+  $('.tiles').on('click', onTileClick);
+};
 module.exports = {
+    addHandlers,
     board,
+    onTileClick,
     player_turn,
     play_move,
     setGameArray,
