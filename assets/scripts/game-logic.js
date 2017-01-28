@@ -4,28 +4,24 @@
 let board = ['', '', '', '', '', '', '', '', ''];
 
 let player = 'X';
-//look through board for
-//switch between x and o function
-// let switchPlayer = function(index) {
-//   let countPlayer = 0;
-//   for (let i = 0;) {
-//     if (board[i] === "X" || board[i] === "O"){
-//     countPlayer++;
-//   }
-// };
-// };
-let switchPlayer = function () {
-  if (player === 'X') {
-    player = 'O';
-  }
-  else {
-    player = 'X';
-  }
+
+let turnCount = 0;
+
+let winner = false;
+
+const switchPlayer = function () {
+  if (turnCount % 2 === 0) {
+      player = 'X';
+    } else {
+      player = 'O';
+    }
+    turnCount++;
   console.log(player + '' + 'Your turn!');
+  return turnCount;
 };
 
 //play x or o depending on player_turn;
-let play_move = function(index){
+const play_move = function(index){
   if(board[index] !== "X" && board[index] !== "O"){
     if (player === 'X') {
       board[index] = 'X';
@@ -33,85 +29,35 @@ let play_move = function(index){
       board[index] = 'O';
     }
   }
-
   console.log('nice move');
 };
 
-//create game board that puts value in correct game board/tile index
-// one of the two below?
-
-// let setGameArray = function (tiles) {
-//   let index = $(tiles).data('.board');
-//   board[index] = player;
-//   console.log(board);
-// };
-
-// let setGameArray = function (board) {
-//   let index = $(this).parent().index('.board');
-//   board[index] = player_turn;
-//   console.log('board up to date' + '' + "next player's turn");
-// };
-
 //check for winners function
-let diagonalWinner = function (board) {
-  if (board[0] !== '' && board[0] === board[4] && board[0] === board[8]){
-    console.log('You Win!');//Jquery?
-    return true;
-  }
-  else if (board[2] !== '' && board[2] === board[4] && board[2] === board[6]) {
-    console.log('You Win');
-    return true;
-  }
-  else {
-    return false;
-  }
-};
-
-let rowWinner = function (board) {
-  if (board[0] !== '' && board[0] === board[1] && board[0] === board[2]){
-    console.log('You Win!');//Jquery?
-    return true;
-  }
-  else if (board[3] !== '' && board[3] === board[4] && board[3] === board[5]) {
-    console.log('You Win');
-    return true;
-  }
-  else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
-    console.log('You Win');
-    return true;
-  }
-  else {
-    return false;
-  }
-};
-
-let columnWinner = function (board) {
-  if ((board[0] !== '' && board[0] === board[3] && board[0] === board[6]) ||
+let checkWinner = function () {
+  if ((board[0] !== '' && board[0] === board[4] && board[0] === board[8]) ||
+  (board[2] !== '' && board[2] === board[4] && board[2] === board[6])) {
+    console.log('You Win!');
+    winner = true;
+  } else if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
+  (board[3] !== '' && board[3] === board[4] && board[3] === board[5]) ||
+  (board[6] !== '' && board[6] === board[7] && board[6] === board[8])) {
+    console.log('You Win!');
+    winner = true;
+  } else if ((board[0] !== '' && board[0] === board[3] && board[0] === board[6]) ||
   (board[1] !== '' && board[1] === board[4] && board[1] === board[7]) ||
   (board[2] !== '' && board[2] === board[5] && board[2] === board[8])) {
     console.log('You Win!');//Jquery?
-    return true;
+    winner = true;
   }
-  // else if (board[1] !== '' && board[1] === board[4] && board[1] === board[7]) {
-  //   console.log('You Win');
-  //   return true;
-  // }
-  // else if (board[2] !== '' && board[2] === board[5] && board[2] === board[8]) {
-  //   console.log('You Win');
-  //   return true;
-  // }
-  // else {
-  //   return false;
-  // }
+
 };
-
-
 //combine all winning conditional functions for one exportable function.
-const winner = function () {
-  if(diagonalWinner === true || rowWinner === true || columnWinner === true) {
-  console.log('player ' + player + ' ' + board + 'you win!');
-}
-};
+// const winner = function () {
+//   if(diagonalWinner === true || rowWinner === true || columnWinner === true) {
+//   console.log('player ' + player + ' ' + board + 'you win!');
+// }
+// };
+
 //Make tile click with appropriate function
 const updateBoard = function () {
   for (let i = 0; i < board.length; i++) {
@@ -123,21 +69,22 @@ const updateBoard = function () {
   }
 };
 
+const resetBoard = function () {
+  for (let i = 0; i < board.length; i++) {
+    board[i] = '';
+    $('#' + i).text('');
+  }
+};
 
 const runGame = function (event) {
   switchPlayer();
   play_move(parseInt(event.target.id));
-  console.log(board);
   updateBoard();
-  winner();
+  checkWinner();
+  if (winner === true) {
+    resetBoard();
+  }
 };
-
-  //if ($( !== X OR O))
-
-    // // play_move();
-    // setGameArray();
-    // winner();
-// };
 const addHandlers = () => {
   $('#0').on('click', runGame);
   $('#1').on('click', runGame);
@@ -149,6 +96,7 @@ const addHandlers = () => {
   $('#7').on('click', runGame);
   $('#8').on('click', runGame);
 };
+
 module.exports = {
     addHandlers,
     board,
@@ -156,5 +104,6 @@ module.exports = {
     switchPlayer,
     play_move,
     runGame,
-    winner,
+    checkWinner,
+    resetBoard,
 };
