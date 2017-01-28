@@ -45,7 +45,7 @@ h2 {
 }
 
 .tiles {
-  text-color: black;
+  font: black;
   height: 75%;
   width: 23%;
   margin: 0 auto;
