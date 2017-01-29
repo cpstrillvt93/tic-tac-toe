@@ -9,9 +9,13 @@ let turnCount = 0;
 
 let winner = false;
 
+let tie = false;
+
 let xWin = 0;
 
 let oWin = 0;
+
+let gameCount = 0;
 
 
 const switchPlayer = function () {
@@ -58,6 +62,14 @@ let checkWinner = function () {
   (board[2] !== '' && board[2] === board[5] && board[2] === board[8])) {
     console.log('You Win!');//Jquery?
     winner = true;
+  }
+  if (winner === true) {
+    gameCount++;
+  }
+  else if (winner !== true && turnCount >= 9) {
+    tie = true;
+    gameCount++;
+    console.log('Tie game!');
   }
 
 };
