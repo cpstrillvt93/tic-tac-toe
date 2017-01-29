@@ -13,6 +13,7 @@ let xWin = 0;
 
 let oWin = 0;
 
+
 const switchPlayer = function () {
   if (turnCount % 2 === 0 ) {
       player = 'X';
@@ -77,6 +78,8 @@ const resetBoard = function () {
     board[index] = '';
     $('#' + index).text('');
   }
+    turnCount = 0;
+    winner = false;
 };
 
 const updateScoreboard = function () {
@@ -93,10 +96,10 @@ const runGame = function (event) {
     console.log(board);
   checkWinner();
   if (winner === true) {
-    resetBoard();
     console.log(board);
+    resetBoard();
     updateBoard();
-    updateScoreboard();
+    // updateScoreboard();
   }
 };
 
@@ -129,5 +132,6 @@ module.exports = {
     checkWinner,
     resetBoard,
     updateScoreboard,
+
 
 };
