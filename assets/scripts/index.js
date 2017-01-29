@@ -5,7 +5,8 @@ const config = require('./config');
 const game = require('./game-logic');
 $(() => {
   setAPIOrigin(location, config);
-  game.addHandlers();
+  game.addTileHandlers();
+  // game.addGameButtons();
 });
 
 // use require with a reference to bundle the file and use it in this file

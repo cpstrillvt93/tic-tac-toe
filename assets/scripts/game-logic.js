@@ -9,8 +9,12 @@ let turnCount = 0;
 
 let winner = false;
 
+let xWin = 0;
+
+let oWin = 0;
+
 const switchPlayer = function () {
-  if (turnCount % 2 === 0) {
+  if (turnCount % 2 === 0 ) {
       player = 'X';
     } else {
       player = 'O';
@@ -22,7 +26,12 @@ const switchPlayer = function () {
 
 //play x or o depending on player_turn;
 const play_move = function(index){
-  if(board[index] !== "X" && board[index] !== "O"){
+  if (board[index] !== '') {
+    console.log('spot already taken');
+    turnCount--;
+    return 'spot already taken';
+  }
+  else if(board[index] !== "X" && board[index] !== "O"){
     if (player === 'X') {
       board[index] = 'X';
     } else {
@@ -51,41 +60,48 @@ let checkWinner = function () {
   }
 
 };
-//combine all winning conditional functions for one exportable function.
-// const winner = function () {
-//   if(diagonalWinner === true || rowWinner === true || columnWinner === true) {
-//   console.log('player ' + player + ' ' + board + 'you win!');
-// }
-// };
 
-//Make tile click with appropriate function
+//add tile clicked to array
 const updateBoard = function () {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === 'X') {
-      $('#' + i).text('X');
-    } else if (board[i] === 'O') {
-      $('#' + i).text('O');
+  for (let index = 0; index < board.length; index++) {
+    if (board[index] === 'X') {
+      $('#' + index).text('X');
+    } else if (board[index] === 'O') {
+      $('#' + index).text('O');
     }
   }
 };
 
-const resetBoard = function () {
-  for (let i = 0; i < board.length; i++) {
-    board[i] = '';
-    $('#' + i).text('');
+// const resetBoard = function () {
+//   for (let i = 0; i < board.length; i++) {
+//     board[i] = '';
+//     $('#' + i).text('');
+//   }
+// };
+
+const updateScoreboard = function () {
+  if (winner === true && player === 'X') {
+      xWin++;
+  } else {
+      oWin++;
   }
 };
-
 const runGame = function (event) {
   switchPlayer();
   play_move(parseInt(event.target.id));
   updateBoard();
+    console.log(board);
   checkWinner();
   if (winner === true) {
-    resetBoard();
+    // resetBoard();
+    updateBoard();
+    updateScoreboard();
   }
 };
-const addHandlers = () => {
+
+
+
+const addTileHandlers = () => {
   $('#0').on('click', runGame);
   $('#1').on('click', runGame);
   $('#2').on('click', runGame);
@@ -97,13 +113,20 @@ const addHandlers = () => {
   $('#8').on('click', runGame);
 };
 
+// const addGameButtons = () => {
+//   $('#start').on('click', resetBoard);
+// };
+
 module.exports = {
-    addHandlers,
+    addTileHandlers,
+    // addGameButtons,
     board,
     updateBoard,
     switchPlayer,
     play_move,
     runGame,
     checkWinner,
-    resetBoard,
+    // resetBoard,
+    updateScoreboard,
+
 };

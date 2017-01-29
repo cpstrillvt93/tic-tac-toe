@@ -12,12 +12,32 @@ h2 {
 }
 
 #start {
-  width: 400px;
+  width: 200px;
   background-color: white;
-  height: 300px;
+  height: 100px;
   font-family: 'Dosis', sans-serif;
-  font-size: 50px;
+  font-size: 25px;
   margin: 0 auto;
+}
+
+#sign-up{
+  width: 10px;
+  height: 10px;
+
+}
+#sign-in{
+  width: 10px;
+  height: 10px;
+}
+#sign-out{
+  width: 10px;
+  height: 10px;
+
+}
+#change-password{
+  width: 10px;
+  height: 10px;
+
 }
 
 #scoreboard {
