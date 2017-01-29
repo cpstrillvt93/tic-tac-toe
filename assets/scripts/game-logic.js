@@ -72,12 +72,12 @@ const updateBoard = function () {
   }
 };
 
-// const resetBoard = function () {
-//   for (let i = 0; i < board.length; i++) {
-//     board[i] = '';
-//     $('#' + i).text('');
-//   }
-// };
+const resetBoard = function () {
+  for (let index = 0; index < board.length; index++) {
+    board[index] = '';
+    $('#' + index).text('');
+  }
+};
 
 const updateScoreboard = function () {
   if (winner === true && player === 'X') {
@@ -93,7 +93,8 @@ const runGame = function (event) {
     console.log(board);
   checkWinner();
   if (winner === true) {
-    // resetBoard();
+    resetBoard();
+    console.log(board);
     updateBoard();
     updateScoreboard();
   }
@@ -126,7 +127,7 @@ module.exports = {
     play_move,
     runGame,
     checkWinner,
-    // resetBoard,
+    resetBoard,
     updateScoreboard,
 
 };
