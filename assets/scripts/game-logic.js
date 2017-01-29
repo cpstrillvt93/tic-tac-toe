@@ -92,6 +92,7 @@ const resetBoard = function () {
   }
     turnCount = 0;
     winner = false;
+    gameCount++;
 };
 
 const updateScoreboard = function () {
@@ -129,13 +130,13 @@ const addTileHandlers = () => {
   $('#8').on('click', runGame);
 };
 
-// const addGameButtons = () => {
-//   $('#start').on('click', resetBoard);
-// };
+const addGameButtons = () => {
+  $('#start').on('click', resetBoard);
+};
 
 module.exports = {
     addTileHandlers,
-    // addGameButtons,
+    addGameButtons,
     board,
     updateBoard,
     switchPlayer,
