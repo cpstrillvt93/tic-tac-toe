@@ -93,6 +93,7 @@ const resetBoard = function () {
     turnCount = 0;
     winner = false;
     gameCount++;
+    console.log('game board was reset! Thats another game played!');
 };
 
 const updateScoreboard = function () {
