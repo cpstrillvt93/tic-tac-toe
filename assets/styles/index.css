@@ -52,6 +52,30 @@ fieldset {
 }
 
 #scoreboard {
+  font-family: 'Dosis', sans-serif;
+  font-color: black;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  clear: both;
+}
+
+#scoreboardX {
+  font-family: 'Dosis', sans-serif;
+  font-color: black;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  clear: both;
+}
+
+#scoreboardO {
+  font-family: 'Dosis', sans-serif;
+  font-color: black;
+  font-size: 25px;
+  text-align: center;
   margin-top: 50px;
   margin-bottom: 50px;
   clear: both;

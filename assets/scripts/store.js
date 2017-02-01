@@ -1,21 +1,8 @@
 
 'use strict';
 
-const store = require('../store.js');
-
-const success = (data) => {
+const store = {
 
 };
 
-const failure = (error) => {
-
-};
-
-
-
-module.exports = {
-  store,
-  success,
-  failure,
-
-};
+module.exports = store;

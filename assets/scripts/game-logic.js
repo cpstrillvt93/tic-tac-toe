@@ -1,5 +1,9 @@
 'use strict';
 
+
+const api = require('../auth/api');
+// const store = require('./store');
+
 // global variables
 let board = ['', '', '', '', '', '', '', '', ''];
 
@@ -11,9 +15,9 @@ let winner = false;
 
 let tie = false;
 
-let xWin = 0;
-
-let oWin = 0;
+// let xWin = 0;
+//
+// let oWin = 0;
 
 let gameCount = 0;
 
@@ -52,20 +56,21 @@ let checkWinner = function () {
   (board[2] !== '' && board[2] === board[4] && board[2] === board[6])) {
     console.log('You Win!');
     winner = true;
+    return true;
   } else if ((board[0] !== '' && board[0] === board[1] && board[0] === board[2]) ||
   (board[3] !== '' && board[3] === board[4] && board[3] === board[5]) ||
   (board[6] !== '' && board[6] === board[7] && board[6] === board[8])) {
     console.log('You Win!');
     winner = true;
+    return true;
   } else if ((board[0] !== '' && board[0] === board[3] && board[0] === board[6]) ||
   (board[1] !== '' && board[1] === board[4] && board[1] === board[7]) ||
   (board[2] !== '' && board[2] === board[5] && board[2] === board[8])) {
     console.log('You Win!');//Jquery?
     winner = true;
+    return true;
   }
-  if (winner === true) {
-    gameCount++;
-  }
+
   else if (winner !== true && turnCount >= 9) {
     tie = true;
     gameCount++;
@@ -85,6 +90,25 @@ const updateBoard = function () {
   }
 };
 
+const runGame = function (event) {
+  switchPlayer();
+  play_move(parseInt(event.target.id));
+  updateBoard();
+    console.log(board);
+  winner = checkWinner();
+  api.storeGame(player, winner, parseInt(event.target.id));
+  if (winner === true) {
+    // resetBoard();
+    turnCount--;
+    $('#scoreboard').text(player + '' + ' Wins!');
+    $('.board').off('click');
+
+
+    console.log(board);
+
+  }
+};
+
 const resetBoard = function () {
   for (let index = 0; index < board.length; index++) {
     board[index] = '';
@@ -93,42 +117,41 @@ const resetBoard = function () {
     turnCount = 0;
     winner = false;
     gameCount++;
+    $('.board').on('click', runGame);
     console.log('game board was reset! Thats another game played!');
 };
 
-const updateScoreboard = function () {
-  if (winner === true && player === 'X') {
-      xWin++;
-  } else {
-      oWin++;
-  }
-};
-const runGame = function (event) {
-  switchPlayer();
-  play_move(parseInt(event.target.id));
-  updateBoard();
-    console.log(board);
-  checkWinner();
-  if (winner === true) {
-    console.log(board);
-    resetBoard();
-    updateBoard();
-    // updateScoreboard();
-  }
-};
-
-
+// const runGame = function (event) {
+//   switchPlayer();
+//   play_move(parseInt(event.target.id));
+//   updateBoard();
+//     console.log(board);
+//   winner = checkWinner();
+//   if (winner === true) {
+//     // resetBoard();
+//     turnCount--;
+//     $('#scoreboard').text(player + '' + ' Wins!');
+//     $('.board').off('click');
+//     // $('#scoreboardX').text("Player X Score: " + xWin);
+//     // $('#scoreboardO').text("Player O Score: " + oWin);
+//
+//     console.log(board);
+//     // updateScoreboard();
+//     // updateScoreboard();
+//   }
+// };
 
 const addTileHandlers = () => {
-  $('#0').on('click', runGame);
-  $('#1').on('click', runGame);
-  $('#2').on('click', runGame);
-  $('#3').on('click', runGame);
-  $('#4').on('click', runGame);
-  $('#5').on('click', runGame);
-  $('#6').on('click', runGame);
-  $('#7').on('click', runGame);
-  $('#8').on('click', runGame);
+  // $('#0').on('click', runGame);
+  // $('#1').on('click', runGame);
+  // $('#2').on('click', runGame);
+  // $('#3').on('click', runGame);
+  // $('#4').on('click', runGame);
+  // $('#5').on('click', runGame);
+  // $('#6').on('click', runGame);
+  // $('#7').on('click', runGame);
+  // $('#8').on('click', runGame);
+  $('.board').on('click', runGame);
 };
 
 const addGameButtons = () => {
@@ -145,7 +168,5 @@ module.exports = {
     runGame,
     checkWinner,
     resetBoard,
-    updateScoreboard,
-
-
+    // updateScoreboard,
 };
