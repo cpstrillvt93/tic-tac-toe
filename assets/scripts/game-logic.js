@@ -102,10 +102,7 @@ const runGame = function (event) {
     turnCount--;
     $('#scoreboard').text(player + '' + ' Wins!');
     $('.board').off('click');
-
-
     console.log(board);
-
   }
 };
 
@@ -120,6 +117,8 @@ const resetBoard = function () {
     $('.board').on('click', runGame);
     console.log('game board was reset! Thats another game played!');
 };
+
+
 
 // const runGame = function (event) {
 //   switchPlayer();
@@ -141,25 +140,27 @@ const resetBoard = function () {
 //   }
 // };
 
-const addTileHandlers = () => {
-  // $('#0').on('click', runGame);
-  // $('#1').on('click', runGame);
-  // $('#2').on('click', runGame);
-  // $('#3').on('click', runGame);
-  // $('#4').on('click', runGame);
-  // $('#5').on('click', runGame);
-  // $('#6').on('click', runGame);
-  // $('#7').on('click', runGame);
-  // $('#8').on('click', runGame);
-  $('.board').on('click', runGame);
-};
+// const addTileHandlers = () => {
+//   // $('#0').on('click', runGame);
+//   // $('#1').on('click', runGame);
+//   // $('#2').on('click', runGame);
+//   // $('#3').on('click', runGame);
+//   // $('#4').on('click', runGame);
+//   // $('#5').on('click', runGame);
+//   // $('#6').on('click', runGame);
+//   // $('#7').on('click', runGame);
+//   // $('#8').on('click', runGame);
+//   // $('.board').on('click', runGame);
+//   // $('.board').on('click', runGame);
+// };
 
 const addGameButtons = () => {
   $('#start').on('click', resetBoard);
+  $('.board').on('click', runGame);
 };
 
 module.exports = {
-    addTileHandlers,
+    // addTileHandlers,
     addGameButtons,
     board,
     updateBoard,

@@ -5,13 +5,15 @@ const ui = require('./ui');
 // const config = ('./../scripts/config');
 const store = require('./../scripts/store');
 
-// $('#sign-up').hide();
+
 
 const onSignUp = function (event) {
   event.preventDefault();
+
   let data = getFormFields(event.target);
+
   api.signUp(data)
-    .then(ui.success)
+    .then(ui.onSignUpSuccess)
     .catch(ui.failure);
     console.log('signed up');
 };
@@ -26,7 +28,7 @@ const onSignIn = function (event) {
       store.user = response.user;
       return store;
     })
-    .then(ui.success)
+    .then(ui.onSignInSuccess)
     .then(() => {
       console.log(store);
     })
@@ -41,6 +43,17 @@ const onChangePassword = function (event) {
 
   api.changePassword(data)
   .then(ui.success)
+  .catch(ui.failure)
+  ;
+};
+
+const onSignOut = function (event) {
+  event.preventDefault();
+
+  let data = getFormFields(event.target);
+
+  api.signOut(data)
+  .then(ui.onSignOutSuccess)
   .catch(ui.failure)
   ;
 };
@@ -63,15 +76,21 @@ const onShowGame = function () {
   event.preventDefault();
 
   api.showGames()
-  .then(ui.success)
+  .then(ui.showGameSuccess)
   .catch(ui.failure)
   ;
 };
 
 const addHandlers = () => {
+  $('.board').hide();
+  $('#start').hide();
+  $('#show-games').hide();
+  $('#change-password').hide();
+  $('#sign-out').hide();
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
+  $('#sign-out').on('submit', onSignOut);
   $('#start').on('click', onCreateGame);
   $('#show-games').on('click', onShowGame);
 

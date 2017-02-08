@@ -12,7 +12,7 @@ const game = require('./game-logic');
 
 $(() => {
   authEvents.addHandlers();
-  game.addTileHandlers();
+  // game.addTileHandlers();
   game.addGameButtons();
 
 });
