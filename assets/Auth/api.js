@@ -43,14 +43,13 @@ const changePassword = function(data){
   });
 };
 
-const createGame = function (data) {
+const createGame = function () {
   return $.ajax({
     method: 'POST',
     url: config.apiOrigin + '/games/',
     headers: {
       Authorization: 'Token token=' + store.user.token,
     },
-    data,
   });
 };
 

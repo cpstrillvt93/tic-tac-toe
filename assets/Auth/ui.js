@@ -1,21 +1,14 @@
 'use strict';
-
-// const success = (data) => {
-//   if (data) { console.log(data); }
-// };
-//
-// const failure = (error) => {
-//   console.error(error);
-// };
+const game = require('../scripts/game-logic');
 
 const onSignUpSuccess = () => {
   $('.hide-sign-up').on('click').hide();
   // $('.hide-sign-in').on('click').hide();
   $('.hide-change-pw').on('click').show();
   $('.hide-sign-out').on('click').show();
-  $('.board').show();
-  $('#start').show();
-  $('#show-games').show();
+  // $('.board').show();
+  // $('#start').show();
+  // $('#show-games').show();
 };
 
 const onSignInSuccess = () => {
@@ -23,14 +16,15 @@ const onSignInSuccess = () => {
   $('.hide-sign-up').on('click').hide();
   $('.hide-change-pw').on('click').show();
   $('.hide-sign-out').on('click').show();
-  $('.board').show();
+  // $('.board').show();
   $('#start').show();
   $('#show-games').show();
   $('#scoreboard').show();
   $('#game-log').show();
   $('#scoreboard').text(' ');
   $('#game-log').text(' ');
-
+  // $('#start').on('click', game.onCreateGame);
+  $('#start').on('click', game.resetBoard);
 };
 
 const onSignOutSuccess = () => {
@@ -51,16 +45,9 @@ const showGameSuccess = (data) => {
 
 
 
-
-
-
-
 module.exports = {
-  // failure,
-  // success,
   onSignUpSuccess,
   onSignInSuccess,
   onSignOutSuccess,
   showGameSuccess,
-
 };

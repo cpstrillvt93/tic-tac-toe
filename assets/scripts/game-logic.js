@@ -3,7 +3,8 @@
 
 const api = require('../auth/api');
 // const store = require('./store');
-
+const store = require('./store');
+// const ui = require('../auth/ui');
 // global variables
 let board = ['', '', '', '', '', '', '', '', ''];
 
@@ -19,7 +20,7 @@ let tie = false;
 //
 // let oWin = 0;
 
-let gameCount = 0;
+// let gameCount = 0;
 
 
 const switchPlayer = function () {
@@ -39,8 +40,7 @@ const play_move = function(index){
     console.log('spot already taken');
     turnCount--;
     return 'spot already taken';
-  }
-  else if(board[index] !== "X" && board[index] !== "O"){
+  } else if(board[index] !== "X" && board[index] !== "O"){
     if (player === 'X') {
       board[index] = 'X';
     } else {
@@ -73,8 +73,9 @@ let checkWinner = function () {
 
   else if (winner !== true && turnCount >= 9) {
     tie = true;
-    gameCount++;
+    // gameCount++;
     console.log('Tie game!');
+    return true;
   }
 
 };
@@ -101,67 +102,51 @@ const runGame = function (event) {
     // resetBoard();
     turnCount--;
     $('#scoreboard').text(player + '' + ' Wins!');
-    $('.board').off('click');
+    $('.tiles').off('click');
     console.log(board);
+  }
+  if (tie === true) {
+    turnCount--;
+       $('#scoreboard').text('Tie Game!');
+       $('.tiles').off('click');
+       console.log(board);
   }
 };
 
+const onCreateGameSuccess = () => {
+  $('.board').show();
+  $('.tiles').off('click');
+  $('.tiles').on('click', runGame);
+};
+
+const onCreateGameFailure = () => {
+
+};
+
 const resetBoard = function () {
+  // setting all the values on the board to blank
   for (let index = 0; index < board.length; index++) {
     board[index] = '';
     $('#' + index).text('');
   }
+  // setting count, winner and tie
     turnCount = 0;
     winner = false;
-    gameCount++;
-    $('.board').on('click', runGame);
+    tie = false;
+    // gameCount++;
+    // creates the game in the api
+    api.createGame()
+      .then((response)=> {
+        store.game = response.game;
+      })
+      .then(onCreateGameSuccess)
+      .catch(onCreateGameFailure)
+    ;
     console.log('game board was reset! Thats another game played!');
 };
 
 
-
-// const runGame = function (event) {
-//   switchPlayer();
-//   play_move(parseInt(event.target.id));
-//   updateBoard();
-//     console.log(board);
-//   winner = checkWinner();
-//   if (winner === true) {
-//     // resetBoard();
-//     turnCount--;
-//     $('#scoreboard').text(player + '' + ' Wins!');
-//     $('.board').off('click');
-//     // $('#scoreboardX').text("Player X Score: " + xWin);
-//     // $('#scoreboardO').text("Player O Score: " + oWin);
-//
-//     console.log(board);
-//     // updateScoreboard();
-//     // updateScoreboard();
-//   }
-// };
-
-// const addTileHandlers = () => {
-//   // $('#0').on('click', runGame);
-//   // $('#1').on('click', runGame);
-//   // $('#2').on('click', runGame);
-//   // $('#3').on('click', runGame);
-//   // $('#4').on('click', runGame);
-//   // $('#5').on('click', runGame);
-//   // $('#6').on('click', runGame);
-//   // $('#7').on('click', runGame);
-//   // $('#8').on('click', runGame);
-//   // $('.board').on('click', runGame);
-//   // $('.board').on('click', runGame);
-// };
-
-const addGameButtons = () => {
-  $('#start').on('click', resetBoard);
-  $('.board').on('click', runGame);
-};
-
 module.exports = {
-    // addTileHandlers,
-    addGameButtons,
     board,
     updateBoard,
     switchPlayer,
@@ -169,5 +154,4 @@ module.exports = {
     runGame,
     checkWinner,
     resetBoard,
-    // updateScoreboard,
 };
