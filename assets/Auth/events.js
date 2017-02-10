@@ -4,6 +4,7 @@ const api = require('./api');
 const ui = require('./ui');
 // const config = ('./../scripts/config');
 const store = require('./../scripts/store');
+const game = require('../scripts/game-logic');
 
 
 
@@ -78,6 +79,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
   $('#show-games').on('click', onShowGame);
+  $('#start').on('click', game.resetBoard);
+
   // $('#game-log').on('click').text('You\'ve played ' + data.games.length + ' games!');
 
 };

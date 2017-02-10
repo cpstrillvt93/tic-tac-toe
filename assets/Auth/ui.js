@@ -24,7 +24,7 @@ const onSignInSuccess = () => {
   $('#scoreboard').text(' ');
   $('#game-log').text(' ');
   // $('#start').on('click', game.onCreateGame);
-  $('#start').on('click', game.resetBoard);
+  // $('#start').on('click', game.resetBoard);
 
 };
 
