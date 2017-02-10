@@ -29,10 +29,10 @@ const onSignIn = function (event) {
       return store;
     })
     .then(ui.onSignInSuccess)
-    .then(() => {
-      console.log(store);
-    })
-    .catch(ui.failure)
+    // .then(() => {
+    //   console.log(store);
+    // })
+    // .catch(ui.failure)
     ;
 };
 
@@ -58,7 +58,7 @@ const onSignOut = function (event) {
   ;
 };
 
-const onShowGame = function () {
+const onShowGame = function (event) {
   event.preventDefault();
 
   api.showGames()
@@ -78,7 +78,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
   $('#show-games').on('click', onShowGame);
-
+  // $('#game-log').on('click').text('You\'ve played ' + data.games.length + ' games!');
 
 };
 
