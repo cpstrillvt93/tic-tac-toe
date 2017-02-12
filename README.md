@@ -30,9 +30,12 @@ I used HTML to structure my single page Tic-Tac-Toe application, CSS for styling
 
 # User Stories
 
+- user wants to have a simple Tic-Tac-Toe experience.
 - user must be able to create an account, login, and sign-out.
-- user can select any cell on the board to put X or 0
-- user must be alerted when he/she wins/loses game
+- user wants to use forms without thinking.
+- user can select any empty tile on the board to put X or 0
+- user must be alerted when wins/loses/ties game
+- user should be able to track the number of times a game was created
 - user must have the ability to start reset the game board after winning/losing.
 
 # Unsolved Problems
