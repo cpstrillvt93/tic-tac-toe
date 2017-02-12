@@ -135,6 +135,7 @@ const resetBoard = function () {
     $('#' + index).text('');
   }
   // setting count, winner and tie
+    $('#scoreboard').text('');
     turnCount = 0;
     winner = false;
     tie = false;

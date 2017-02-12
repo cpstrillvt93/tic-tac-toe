@@ -12,7 +12,6 @@ const onSignUpSuccess = () => {
 };
 
 const onSignInSuccess = () => {
-  $('#sign-in').val(" ");
   $('.hide-sign-in').on('click').hide();
   $('.hide-sign-up').on('click').hide();
   $('.hide-change-pw').on('click').show();
