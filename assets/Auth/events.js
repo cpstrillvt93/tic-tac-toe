@@ -6,8 +6,6 @@ const ui = require('./ui');
 const store = require('./../scripts/store');
 const game = require('../scripts/game-logic');
 
-
-
 const onSignUp = function (event) {
   event.preventDefault();
 
@@ -15,8 +13,9 @@ const onSignUp = function (event) {
 
   api.signUp(data)
     .then(ui.onSignUpSuccess)
-    .catch(ui.failure);
-    console.log('signed up');
+    // .catch(ui.failure);
+    // console.log('signed up');
+    ;
 };
 
 const onSignIn = function (event) {
@@ -44,7 +43,7 @@ const onChangePassword = function (event) {
 
   api.changePassword(data)
   .then(ui.success)
-  .catch(ui.failure)
+  // .catch(ui.failure)
   ;
 };
 
@@ -55,7 +54,7 @@ const onSignOut = function (event) {
 
   api.signOut(data)
   .then(ui.onSignOutSuccess)
-  .catch(ui.failure)
+  // .catch(ui.failure)
   ;
 };
 
@@ -64,7 +63,7 @@ const onShowGame = function (event) {
 
   api.showGames()
   .then(ui.showGameSuccess)
-  .catch(ui.failure)
+  // .catch(ui.failure)
   ;
 };
 

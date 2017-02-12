@@ -10,7 +10,7 @@ $('#0').on('click', function(){
     alert('error');
   }
   // $( "#0" ).text('game.player');
-console.log('box 0 clicked'); //how to block second move
+// console.log('box 0 clicked'); //how to block second move
 });
 $('#1').on('click', function(){
   if ($('#1').text() === '') {
@@ -19,7 +19,7 @@ $('#1').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 1 clicked');
+// console.log('box 1 clicked');
 });
 $('#2').on('click', function(){
   if ($('#2').text() === '') {
@@ -28,7 +28,7 @@ $('#2').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 2 clicked');
+// console.log('box 2 clicked');
 });
 $('#3').on('click', function(){
   if ($('#3').text() === '') {
@@ -37,7 +37,7 @@ $('#3').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 3 clicked');
+// console.log('box 3 clicked');
 });
 $('#4').on('click', function(){
   if ($('#4').text() === '') {
@@ -46,7 +46,7 @@ $('#4').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 4 clicked');
+// console.log('box 4 clicked');
 });
 $('#5').on('click', function(){
   if ($('#5').text() === '') {
@@ -55,7 +55,7 @@ $('#5').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 5 clicked');
+// console.log('box 5 clicked');
 });
 $('#6').on('click', function(){
   if ($('#6').text() === '') {
@@ -64,7 +64,7 @@ $('#6').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 6 clicked');
+// console.log('box 6 clicked');
 });
 $('#7').on('click', function(){
   if ($('#7').text() === '') {
@@ -73,7 +73,7 @@ $('#7').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 7 clicked');
+// console.log('box 7 clicked');
 });
 $('#8').on('click', function(){
   if ($('#8').text() === '') {
@@ -82,7 +82,7 @@ $('#8').on('click', function(){
   else {
     alert('error');
   }
-console.log('box 8 clicked');
+// console.log('box 8 clicked');
 });
 
 // $(".container-game-board").click(function(){

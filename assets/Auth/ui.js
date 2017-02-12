@@ -1,5 +1,5 @@
 'use strict';
-const game = require('../scripts/game-logic');
+// const game = require('../scripts/game-logic');
 
 const onSignUpSuccess = () => {
   $('.hide-sign-up').on('click').hide();
@@ -12,6 +12,7 @@ const onSignUpSuccess = () => {
 };
 
 const onSignInSuccess = () => {
+  $('#sign-in').val(" ");
   $('.hide-sign-in').on('click').hide();
   $('.hide-sign-up').on('click').hide();
   $('.hide-change-pw').on('click').show();
@@ -31,6 +32,7 @@ const onSignInSuccess = () => {
 const showGameSuccess = (data) => {
   $('#game-log').on('click').text('You\'ve played ' + data.games.length + ' games!');
 };
+
 
 const onSignOutSuccess = () => {
   $('.hide-sign-up').on('click').show();

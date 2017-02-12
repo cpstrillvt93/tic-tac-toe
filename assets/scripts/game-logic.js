@@ -5,6 +5,7 @@ const api = require('../auth/api');
 // const store = require('./store');
 const store = require('./store');
 // const ui = require('../auth/ui');
+
 // global variables
 let board = ['', '', '', '', '', '', '', '', ''];
 
