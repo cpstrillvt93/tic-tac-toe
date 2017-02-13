@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <!-- <link href='http://fonts.googleapis.com/css?family=Dosis:500' rel='stylesheet' type='text/css'> -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <!-- <link rel="stylesheet" href="assets/styles/index.css"> -->
+      <!-- <link rel="stylesheet/scss" type="text/scss" href="index.scss"> -->
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1 id="href"> Tic-Tac Toe </h1>
+      <p> Black and White Tic-Tac-Toe. A simply designed game for simple people.
+          Sign-up, Sign-in, and click "Play Tic-Tac-Toe" to play a new game.
+          Click the corresponding button to change your password
+          and try your best to remember when you do so, otherwise you might get locked out.
+          Sign-out if you want to create another account and then do it all over again.
+          We'll do our best to remember what information you used!
+          You can even see the number of times you clicked play!</p>
+        <div id="topbar">
+          <!-- <h1 id="href"> Tic-Tac Toe </h1> -->
+        </div>
+        <form id="sign-up" class="hide-sign-up" >
+        <fieldset>
+          <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
+          <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+      <form id="sign-in" class="hide-sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="sign-out" class="hide-sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+      <form id="change-password" class="hide-change-pw">
+        <fieldset>
+          <legend>Change Password</legend>
+          <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+          <input type="password" name="passwords[new]" value="" placeholder="New Password">
+          <input type="submit" name="submit" value="Change Password">
+        </fieldset>
+      </form>
+        <div class="form-log"></div>
+        <div id="scoreboard"></div>
+        <div id="game-log"></div>
+        <div id="container">
+          <div id="inputs">
+            <button id="start">Play Tic-Tac-Toe</button>
+          </div>
+            <button id="show-games">Show Games</button>
+          <div class="board">
+            <div class="row">
+              <div id="0" class="tiles">
+              </div>
+              <div id="1" class="tiles">
+              </div>
+              <div id="2" class="tiles">
+              </div>
+            </div>
+            <div class="row">
+              <div id="3" class="tiles">
+              </div>
+              <div id="4" class="tiles">
+              </div>
+              <div id="5" class="tiles" >
+              </div>
+            </div>
+            <div class="row">
+              <div id="6" class="tiles">
+              </div>
+              <div id="7" class="tiles">
+              </div>
+              <div id="8" class="tiles">
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+</html>
