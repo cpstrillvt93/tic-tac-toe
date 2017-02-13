@@ -3,7 +3,6 @@
 const config = require('./../scripts/config');
 const store = require('./../scripts/store');
 
-
 const signUp = function(data){
   // console.log(data);
   return $.ajax({

@@ -1,6 +1,4 @@
 'use strict';
-
-
 const api = require('../auth/api');
 // const store = require('./store');
 const store = require('./store');
@@ -92,6 +90,7 @@ const updateBoard = function () {
   }
 };
 
+//primary gameplay function
 const runGame = function (event) {
   switchPlayer();
   play_move(parseInt(event.target.id));
@@ -123,11 +122,11 @@ const onCreateGameSuccess = () => {
   // $('#game-log').on('click').text('You\'ve played ' + gameCount + ' games!');
 };
 
-
 const onCreateGameFailure = () => {
 
 };
 
+//resets board/creates game
 const resetBoard = function () {
   // setting all the values on the board to blank
   for (let index = 0; index < board.length; index++) {
@@ -136,6 +135,7 @@ const resetBoard = function () {
   }
   // setting count, winner and tie
     $('#scoreboard').text('');
+    $('#game-log').text('');
     turnCount = 0;
     winner = false;
     tie = false;
