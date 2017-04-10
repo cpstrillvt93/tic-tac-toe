@@ -12,7 +12,7 @@ const signUp = function(data){
   });
 };
 
-const signIn = function(data){
+const signIn = function(atdata){
   // console.log(data);
   return $.ajax({
     url: config.apiOrigin + '/sign-in/',
